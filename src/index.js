@@ -3,7 +3,7 @@ import { message } from "telegraf/filters";
 
 const BOT_TOKEN = '5859830543:AAEarTywBjksPECYxhU4JsfXyGa0KaXokcM';
 const bot = new Telegraf(BOT_TOKEN);
-
+console.log('BOT_TOKEN = ' + process.env.BOT_TOKEN);
 const getWeatherData = async (city) => {
   const getCityGeolocation = async (city) => {
     console.log('City to find: '+ city);
@@ -47,7 +47,7 @@ bot.on(message('text'), async (ctx) => {
 
 
 bot.launch(); 
-console.log('rabotaem');
+console.log('BOT STARTED');
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
