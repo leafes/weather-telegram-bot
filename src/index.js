@@ -36,8 +36,10 @@ const formatWeatherData = (data) => {
 
 // Work on normalization of names with few words 
 const normalizeCityName = (city) => {
-  const [firstLetter] = city;
-  const normalizedCityName = firstLetter.toUpperCase() + city.slice(1).toLowerCase();
+  const [firstLetter] = city.toUpperCase();
+  const otherLetters = city.slice(1).toLowerCase();
+  if (firstLetter === '/') return otherLetters;
+  const normalizedCityName = firstLetter + otherLetters;
   return normalizedCityName;
 }
 
@@ -45,9 +47,9 @@ const normalizeCityName = (city) => {
 bot.start((ctx) => ctx.reply('Send me the city name to get the weather infomation'));
 
 bot.on(message('text'), async (ctx) => {
-    const city = normalizeCityName(ctx.message.text);
-    ctx.reply(`City is: ${city}\nFetching info...`);
-    const weatherData = await getWeatherData(city);
+    const normalizedCityName = normalizeCityName(ctx.message.text);
+    ctx.reply(`City is: ${normalizedCityName}\nFetching info...`);
+    const weatherData = await getWeatherData(normalizedCityName);
     ctx.reply(formatWeatherData(weatherData));
   });
 
