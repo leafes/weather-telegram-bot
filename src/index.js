@@ -1,9 +1,12 @@
 import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
+// TODO: Move it in safety later (:
 const BOT_TOKEN = '5859830543:AAEarTywBjksPECYxhU4JsfXyGa0KaXokcM';
 const bot = new Telegraf(BOT_TOKEN);
 console.log('BOT_TOKEN = ' + process.env.BOT_TOKEN);
+
+// TODO: Move API requests to another module 
 const getWeatherData = async (city) => {
   const getCityGeolocation = async (city) => {
     console.log('City to find: '+ city);
@@ -22,6 +25,7 @@ const getWeatherData = async (city) => {
   return {...result, country, city};
 };
 
+// Move formatters to another module
 const formatWeatherData = (data) => {
   if (data === null) return 'City not found 😐';
 
@@ -30,14 +34,16 @@ const formatWeatherData = (data) => {
   return `${city} / ${country} — ${temperature} Celcius\n———\nData collected at: ${time.slice(-5)} GMT`
 };
 
+// Work on normalization of names with few words 
 const normalizeCityName = (city) => {
   const [firstLetter] = city;
   const normalizedCityName = firstLetter.toUpperCase() + city.slice(1).toLowerCase();
   return normalizedCityName;
 }
-bot.start((ctx) => {
-  ctx.reply('Send me the city name to get the weather infomation');
-});
+
+
+bot.start((ctx) => ctx.reply('Send me the city name to get the weather infomation'));
+
 bot.on(message('text'), async (ctx) => {
     const city = normalizeCityName(ctx.message.text);
     ctx.reply(`City is: ${city}\nFetching info...`);
