@@ -1,0 +1,15 @@
+{
+  "name": "weather-bot",
+  "version": "1.0.0",
+  "type":"module",
+  "description": "telegram weather bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "V. K.",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^4.11.2"
+  }
+}
