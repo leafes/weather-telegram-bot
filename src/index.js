@@ -36,10 +36,11 @@ const formatWeatherData = (data) => {
 
 // Work on normalization of names with few words 
 const normalizeCityName = (city) => {
-  const [firstLetter] = city.toUpperCase();
-  const otherLetters = city.slice(1).toLowerCase();
-  if (firstLetter === '/') return otherLetters;
+  const cityWithoutSpecialC = city.replace(/[^a-zA-Zа-яА-Я0123456789\- ]/g, "");
+  const [firstLetter] = cityWithoutSpecialC.toUpperCase();
+  const otherLetters = cityWithoutSpecialC.slice(1).toLowerCase();
   const normalizedCityName = firstLetter + otherLetters;
+
   return normalizedCityName;
 }
 
