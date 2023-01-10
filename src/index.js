@@ -3,8 +3,7 @@ import { message } from "telegraf/filters";
 
 // TODO: Move it in safety later (:
 const BOT_TOKEN = '';
-const bot = new Telegraf(BOT_TOKEN);
-console.log('BOT_TOKEN = ' + process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 // TODO: Move API requests to another module 
 const getWeatherData = async (city) => {
