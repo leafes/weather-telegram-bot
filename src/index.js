@@ -2,7 +2,7 @@ import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
 // TODO: Move it in safety later (:
-const BOT_TOKEN = '5859830543:AAEarTywBjksPECYxhU4JsfXyGa0KaXokcM';
+const BOT_TOKEN = '';
 const bot = new Telegraf(BOT_TOKEN);
 console.log('BOT_TOKEN = ' + process.env.BOT_TOKEN);
 
