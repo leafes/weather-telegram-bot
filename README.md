@@ -4,7 +4,7 @@
 
 ### Getting started
 
-Create bot and generate BOT tocken via [BotFather](https://t.me/BotFather)
+Create bot and generate token via [BotFather](https://t.me/BotFather)
 add BOT_TOKEN to enviromental variables
 then install dependencies and start script
 ```
@@ -14,7 +14,7 @@ $ npm start
 
 (if run localy add BOT_TOKEN manually)
 ```
-$ BOT_TOCKEN={%YOUR_BOT_TOKEN%} npm start
+$ BOT_TOKEN={%YOUR_BOT_TOKEN%} npm start
 ```
 
 ### Technologies
