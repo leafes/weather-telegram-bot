@@ -5,14 +5,10 @@
 ### Getting started
 
 Create bot and generate BOT tocken via [BotFather](https://t.me/BotFather)
-add BOT_TOKEN to enviroment
-then install dependencies 
+add BOT_TOKEN to enviromental variables
+then install dependencies and start script
 ```
 $ npm i
-```
-
-start script 
-```
 $ npm start
 ```
 
