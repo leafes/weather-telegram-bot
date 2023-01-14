@@ -10,10 +10,10 @@ const getWeatherData = async (city) => {
   const geolocation = await getCityGeolocation(city);
   if (geolocation === null) return null;
 
-  const {latitude, longitude, country} = geolocation;
+  const {latitude, longitude, country, name} = geolocation;
   const f = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`)
   const result = await f.json();
-  return {...result, country, city};
+  return {...result, country, city: name};
 };
 
 export default getWeatherData;
