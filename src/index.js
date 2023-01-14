@@ -8,13 +8,12 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start((ctx) => ctx.reply('Send me the city name to get the weather infomation'));
 
 bot.on(message('text'), async (ctx) => {
+    if (ctx.message.text[0] === '/') return;
     const normalizedCityName = normalizeCityName(ctx.message.text);
     ctx.reply(`City is: ${normalizedCityName}\nFetching info...`);
     const weatherData = await getWeatherData(normalizedCityName);
     ctx.reply(formatWeatherData(weatherData));
-    return;
   });
-
 
 bot.launch(); 
 console.log('BOT STARTED');
