@@ -12,6 +12,7 @@ bot.on(message('text'), async (ctx) => {
     ctx.reply(`City is: ${normalizedCityName}\nFetching info...`);
     const weatherData = await getWeatherData(normalizedCityName);
     ctx.reply(formatWeatherData(weatherData));
+    return;
   });
 
 
