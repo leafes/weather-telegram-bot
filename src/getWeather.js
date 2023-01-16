@@ -1,9 +1,8 @@
-// add try 
-
 const getCityGeolocation = async (city) => {
   console.log('City to find: '+ city);
   const f = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`);
   const result = await f.json();
+  // FIX later
   if (Object.keys(result).length < 2) return { err: 'City not found' };
   const response = result.results[0];
   return response;
